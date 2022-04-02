@@ -5,10 +5,18 @@ import TaskInput from './components/TaskInput'
 
 const App = () => {
 
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%%  VARIABLES  %%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
   const alerts = {
     minimumLength: 'Task must be a least 3 characters long!',
     maximumLength: 'Task must be a under 80 characters.'
   }
+
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%  STATS  %%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   const [input, setInput] = useState('');
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')));
@@ -20,7 +28,6 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
-
 
   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   // %%%%%%%%  HELPER FUNCTIONS  %%%%%%%%%
@@ -39,6 +46,9 @@ const App = () => {
     return `${day}/${mon}/${year} ${h}:${min}`
   }
 
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%  MAIN FUNCTIONS  %%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   const onSubmit = () => {
 
@@ -71,6 +81,9 @@ const App = () => {
       ))
   }
 
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   return (
 

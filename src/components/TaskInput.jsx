@@ -1,7 +1,8 @@
 import { FaPlus } from 'react-icons/fa'
 
-const TaskInput = ({ input, setInput, onSubmit }) => {
 
+
+const TaskInput = ({ input, setInput, onSubmit }) => {
 
     return (
 

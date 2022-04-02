@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { FaTrashAlt, FaSave, FaEdit } from 'react-icons/fa';
 
+
+
 const TaskForm = ({ tasks, setTasks }) => {
 
     if (tasks.length === 0) {
@@ -8,7 +10,11 @@ const TaskForm = ({ tasks, setTasks }) => {
         >No tasks available</h3>
     }
 
-    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-4 py-1 bg-gray-100 cursor-pointer';
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    // %%%%%%%%%%%  VARIABLES  %%%%%%%%%%%%%
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-gray-100 cursor-pointer';
     const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-gray-50 cursor-pointer';
 
     return (
