@@ -5,16 +5,16 @@ import { FaTrashAlt, FaSave, FaEdit } from 'react-icons/fa';
 const TaskForm = ({ tasks, setTasks }) => {
 
     if (tasks.length === 0) {
-        return <h3 className="col-span-12"
-        >No tasks available</h3>
+        return <h3 className="col-span-12 px-6"
+        >You have no tasks for today</h3>
     }
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     // %%%%%%%%%%%  VARIABLES  %%%%%%%%%%%%%
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-gray-100 cursor-pointer';
-    const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-gray-50 cursor-pointer';
+    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-[#494E6B] cursor-pointer';
+    const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-[#192231] cursor-pointer';
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
@@ -42,13 +42,13 @@ const TaskForm = ({ tasks, setTasks }) => {
                         } : t))}
                     className='col-span-1 mx-2'
                 >{task.editMode
-                    ? <FaSave className='text-2xl text-green-600' />
-                    : <FaEdit className='text-2xl text-blue-600' />
+                    ? <FaSave className='icons' />
+                    : <FaEdit className='icons' />
                     }</button>
 
                 <button onClick={() => setTasks(tasks.filter(t => task.id !== t.id))}
                     className='col-span-1 mx-2'
-                ><FaTrashAlt className='text-2xl text-red-600'
+                ><FaTrashAlt className='icons'
                     /></button>
 
 
@@ -64,8 +64,8 @@ export default TaskForm;
 const Label = ({ task }) => {
 
 
-    const completedTaskCss = 'text-overflow line-through text-gray-500';
-    const unCompletedTaskCss = 'text-gray-600 text-overflow';
+    const completedTaskCss = 'text-overflow line-through text-[#985E6D]';
+    const unCompletedTaskCss = 'text-gray-50 text-overflow';
 
     return (
         <div className='col-span-10'>
@@ -73,7 +73,7 @@ const Label = ({ task }) => {
             <h3 className={task.complete ? completedTaskCss : unCompletedTaskCss}
             >{task.text}</h3>
 
-            <h6 className='text-xs font-bold text-gray-600 px-2'
+            <h6 className='text-xs font-bold text-[#985E6D] px-2'
             >{task.time}</h6>
 
         </div>

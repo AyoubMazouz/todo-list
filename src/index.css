@@ -7,12 +7,18 @@
 
 
 body {
-  @apply font-['montserrat'] font-semibold flex justify-center;
+  @apply font-['montserrat'] font-semibold flex justify-center bg-[#494E6B];
 }
 
 @layer utilities {
   .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+@layer components {
+  .icons {
+    @apply text-2xl text-[#98878F] hover:text-[#985E6D];
   }
 }
