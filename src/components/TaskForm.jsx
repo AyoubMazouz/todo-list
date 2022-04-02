@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { FaTrashAlt, FaSave, FaEdit } from 'react-icons/fa';
 
 
@@ -17,25 +16,35 @@ const TaskForm = ({ tasks, setTasks }) => {
     const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-gray-100 cursor-pointer';
     const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-gray-50 cursor-pointer';
 
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     return (
         tasks.map(task =>
             <div key={task.id}
-                onClick={() => setTasks(p => p.map(t => task.id === t.id ? { ...t, complete: !t.complete } : t))}
+                onClick={() => setTasks(p => p.map(t =>
+                    task.id === t.id && !task.editMode
+                        ? { ...t, complete: !t.complete } : t))}
                 className={task.complete ? completedTaskCss : unCompletedTaskCss}>
 
-                {task.editMode
-                    ? <EditLabel task={task} setTasks={setTasks} />
-                    : <Label task={task} />
+                {
+                    task.editMode
+                        ? <EditLabel task={task} setTasks={setTasks} />
+                        : <Label task={task} />
                 }
 
-                {<button onClick={() => setTasks(p => p.map(t =>
-                    task.id === t.id ? { ...t, editMode: !t.editMode } : t))}
+                <button onClick={() => setTasks(p => p.map(t =>
+                    task.id === t.id ?
+                        {
+                            ...t,
+                            editMode: !t.editMode,
+                            complete: false
+                        } : t))}
                     className='col-span-1 mx-2'
                 >{task.editMode
                     ? <FaSave className='text-2xl text-green-600' />
                     : <FaEdit className='text-2xl text-blue-600' />
                     }</button>
-                }
 
                 <button onClick={() => setTasks(tasks.filter(t => task.id !== t.id))}
                     className='col-span-1 mx-2'
@@ -55,8 +64,8 @@ export default TaskForm;
 const Label = ({ task }) => {
 
 
-    const completedTaskCss = 'text-sm text-gray-800 text-overflow line-through text-gray-500';
-    const unCompletedTaskCss = 'text-sm text-gray-600 text-overflow';
+    const completedTaskCss = 'text-overflow line-through text-gray-500';
+    const unCompletedTaskCss = 'text-gray-600 text-overflow';
 
     return (
         <div className='col-span-10'>
@@ -79,7 +88,7 @@ const EditLabel = ({ task, setTasks }) => {
                 setTasks(prev =>
                     prev.map(t => t.id === task.id ? { ...t, text: e.target.value } : t))
             }}
-            className='col-span-10 bg-gray-50 h-9 focus:outline-none text-sm px-4'
+            className='bg-gray-50 h-9 focus:outline-none text-sm px-4 col-span-10'
         ></input>
     )
 }

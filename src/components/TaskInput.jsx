@@ -4,6 +4,9 @@ import { FaPlus } from 'react-icons/fa'
 
 const TaskInput = ({ input, setInput, onSubmit }) => {
 
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     return (
 
         <div className="grid grid-cols-12 pl-4 rounded shadow-md bg-gray-50 text-gray-800 mb-12">
