@@ -6,31 +6,37 @@ import TaskInput from './components/TaskInput'
 const App = () => {
 
 
+
   const [input, setInput] = useState('');
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')));
 
-  console.log(JSON.parse(localStorage.getItem('tasks')))
+  useEffect(() => {
+    setTasks(prev => prev.map(task => ({ ...task, editMode: false })))
+  }, [])
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
 
-  const onSubmit = e => {
-    e.preventDefault();
+
+  const onSubmit = () => {
     if (input.trim().length < 3) return;
+
+    const d = new Date()
 
     setTasks([{
       id: Math.random() * 1000 | 0,
       text: input,
-      time: '00:00',
       complete: false,
-      editMode: false
+      editMode: false,
+      time: `${d.getDay()}/${d.getMonth()}/${d.getFullYear()}`
     }, ...tasks
     ]);
 
     setInput('');
   }
+
 
   const editMode = id => {
     setTasks(prev =>
@@ -39,14 +45,16 @@ const App = () => {
       ))
   }
 
-  return (
-    <div className='w-full space-y-4'>
 
+  return (
+
+    <div className='w-full space-y-4'>
 
       <TaskInput input={input} setInput={setInput} onSubmit={onSubmit} />
       <TaskForm tasks={tasks} editMode={editMode} setTasks={setTasks} />
 
     </div>
+
   );
 }
 

@@ -1,4 +1,6 @@
-const TaskForm = ({ tasks, setTasks, editMode }) => {
+// import { FaFlappyDisk } from 'react-icons/fa;'
+
+const TaskForm = ({ tasks, setTasks }) => {
 
     if (tasks.length === 0) {
         return <h3 className="col-span-12"
@@ -12,7 +14,7 @@ const TaskForm = ({ tasks, setTasks, editMode }) => {
 
                 {task.editMode ? <EditLabel task={task} setTasks={setTasks} /> : <Label task={task} />}
 
-                {<button onClick={() => editMode(task.id)}
+                {<button onClick={() => setTasks(p => p.map(t => task.id === t.id ? { ...t, editMode: !t.editMode } : t))}
                     className='col-span-1 bg-orange-500'
                 >{task.editMode ? 'Save' : 'Edit'}</button>}
 
