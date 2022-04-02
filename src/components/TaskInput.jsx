@@ -5,7 +5,7 @@ const TaskInput = ({ input, setInput, onSubmit }) => {
 
     return (
 
-        <div className="grid grid-cols-12 gap-2 p-2 rounded shadow-md bg-gray-50 text-gray-800">
+        <div className="grid grid-cols-12 pl-4 rounded shadow-md bg-gray-50 text-gray-800 mb-12">
 
             <input type='input'
                 placeholder='Type a Task...'
@@ -17,7 +17,7 @@ const TaskInput = ({ input, setInput, onSubmit }) => {
             <button type='submit'
                 onClick={onSubmit}
                 className=''>
-                <FaPlus />
+                <FaPlus className='text-blue-600 text-2xl' />
             </button>
 
         </div>
