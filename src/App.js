@@ -48,7 +48,7 @@ const App = () => {
 
   return (
 
-    <div className='w-full space-y-4'>
+    <div className='w-full space-y-4 px-4 py-16 sm:w-[600px] md:w-[750px] lg:w-[1000px]'>
 
       <TaskInput input={input} setInput={setInput} onSubmit={onSubmit} />
       <TaskForm tasks={tasks} editMode={editMode} setTasks={setTasks} />
