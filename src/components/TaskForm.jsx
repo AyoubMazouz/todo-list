@@ -13,8 +13,8 @@ const TaskForm = ({ tasks, setTasks }) => {
     // %%%%%%%%%%%  VARIABLES  %%%%%%%%%%%%%
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-[#494E6B] cursor-pointer';
-    const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-[#192231] cursor-pointer';
+    const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-dark cursor-pointer';
+    const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-light cursor-pointer';
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
@@ -33,9 +33,8 @@ const TaskForm = ({ tasks, setTasks }) => {
                         : <Label task={task} />
                 }
 
-                <button onClick={() => setTasks(p => p.map(t =>
-                    task.id === t.id ?
-                        {
+                <button onClick={() => setTasks(p => p.map(t => task.id === t.id 
+                    ? {
                             ...t,
                             editMode: !t.editMode,
                             complete: false
@@ -64,8 +63,8 @@ export default TaskForm;
 const Label = ({ task }) => {
 
 
-    const completedTaskCss = 'text-overflow line-through text-[#985E6D]';
-    const unCompletedTaskCss = 'text-gray-50 text-overflow';
+    const completedTaskCss = 'text-overflow line-through text-light';
+    const unCompletedTaskCss = 'text-dark text-overflow';
 
     return (
         <div className='col-span-10'>
@@ -73,7 +72,7 @@ const Label = ({ task }) => {
             <h3 className={task.complete ? completedTaskCss : unCompletedTaskCss}
             >{task.text}</h3>
 
-            <h6 className='text-xs font-bold text-[#985E6D] px-2'
+            <h6 className='text-xs font-bold text-accent px-2'
             >{task.time}</h6>
 
         </div>
@@ -88,7 +87,7 @@ const EditLabel = ({ task, setTasks }) => {
                 setTasks(prev =>
                     prev.map(t => t.id === task.id ? { ...t, text: e.target.value } : t))
             }}
-            className='bg-gray-50 h-9 focus:outline-none text-sm px-4 col-span-10'
+            className='bg-dark text-accent h-9 focus:outline-none text-sm px-4 col-span-10'
         ></input>
     )
 }

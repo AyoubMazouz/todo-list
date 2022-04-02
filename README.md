@@ -1,4 +1,6 @@
-# Todo list App made with React
+# Todo list App made with React:
+
+#### Live Demo: [ToDo List](https://ayoubmazouz.github.oi/todo-list)
 
 ### In this application you:
 
@@ -8,3 +10,8 @@
 - Delete tasks.
 
 The tasks are stored in LocalStorage.
+
+### Some screenshots:
+
+![1920x1200](./src/screenshots/img1.png)
+![1920x1200](./src/screenshots/img2.png)

@@ -88,6 +88,13 @@ const App = () => {
 
     <div className='transition-all w-94 space-y-2 px-4 py-16 sm:w-[600px] md:w-[750px] lg:w-[1000px]'>
 
+      <header className='w-full flex justify-center'>
+
+    <h1 className='text-2xl text-accent font-bold'
+    >ToDo List</h1>
+
+      </header>
+
       <TaskInput input={input} setInput={setInput} onSubmit={onSubmit} />
       <TaskForm tasks={tasks} editMode={editMode} setTasks={setTasks} />
 
