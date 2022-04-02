@@ -1,4 +1,4 @@
-
+import { FaTrashAlt, FaSave, FaEdit } from 'react-icons/fa';
 
 const TaskForm = ({ tasks, setTasks }) => {
 
@@ -16,11 +16,11 @@ const TaskForm = ({ tasks, setTasks }) => {
 
                 {<button onClick={() => setTasks(p => p.map(t => task.id === t.id ? { ...t, editMode: !t.editMode } : t))}
                     className='col-span-1'
-                >{task.editMode ? 'Save' : 'Edit'}</button>}
+                >{task.editMode ? <FaSave /> : <FaEdit />}</button>}
 
                 <button onClick={() => setTasks(tasks.filter(t => task.id !== t.id))}
                     className='col-span-1'
-                >delete</button>
+                ><FaTrashAlt /></button>
 
             </div>
         )
@@ -49,7 +49,7 @@ const EditLabel = ({ task, setTasks }) => {
                 setTasks(prev =>
                     prev.map(t => t.id === task.id ? { ...t, text: e.target.value } : t))
             }}
-            className='col-span-10'
+            className='col-span-10 bg-gray-50 h-9 focus:outline-none text-sm px-4'
         ></input>
     )
 }
