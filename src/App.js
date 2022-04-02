@@ -5,7 +5,10 @@ import TaskInput from './components/TaskInput'
 
 const App = () => {
 
-
+  const alerts = {
+    minimumLength: 'Task must be a least 3 characters long!',
+    maximumLength: 'Task must be a under 80 characters.'
+  }
 
   const [input, setInput] = useState('');
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')));
@@ -19,18 +22,41 @@ const App = () => {
   }, [tasks])
 
 
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%  HELPER FUNCTIONS  %%%%%%%%%
+  // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  const getDate = () => {
+
+    const d = new Date();
+
+    const day = d.getDay();
+    const mon = d.getMonth();
+    const year = d.getFullYear();
+    const h = d.getHours();
+    const min = d.getMinutes();
+
+    return `${day}/${mon}/${year} ${h}:${min}`
+  }
+
 
   const onSubmit = () => {
-    if (input.trim().length < 3) return;
 
-    const d = new Date()
+    const len = input.trim().length;
+    if (len < 3) {
+      alert(alerts.minimumLength);
+      return
+    } else if (len > 80) {
+      alert(alerts.maximumLength);
+      return
+    }
 
     setTasks([{
       id: Math.random() * 1000 | 0,
       text: input,
       complete: false,
       editMode: false,
-      time: `${d.getDay()}/${d.getMonth()}/${d.getFullYear()}`
+      time: getDate()
     }, ...tasks
     ]);
 
