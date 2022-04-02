@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import TaskForm from './components/TaskForm'
 import TaskInput from './components/TaskInput'
@@ -7,7 +7,13 @@ const App = () => {
 
 
   const [input, setInput] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')));
+
+  console.log(JSON.parse(localStorage.getItem('tasks')))
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
 
   const onSubmit = e => {
@@ -33,30 +39,12 @@ const App = () => {
       ))
   }
 
-
-
-
-  const deleteTask = id => setTasks(tasks.filter(task => task.id !== id));
-
-  const onChange = (e, id) => {
-
-    const currentValue = e.target.value;
-    setTasks(prevTasks =>
-      prevTasks.map(task =>
-        task.id === id ? { ...task, text: currentValue } : task
-      ))
-
-
-  }
-
-
-
   return (
     <div className='w-full space-y-4'>
 
 
       <TaskInput input={input} setInput={setInput} onSubmit={onSubmit} />
-      <TaskForm tasks={tasks} editMode={editMode} deleteTask={deleteTask} setTasks={setTasks} />
+      <TaskForm tasks={tasks} editMode={editMode} setTasks={setTasks} />
 
     </div>
   );

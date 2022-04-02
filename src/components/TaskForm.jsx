@@ -1,7 +1,4 @@
-import { useState } from "react";
-
-
-const TaskForm = ({ tasks, setTasks, editMode, deleteTask }) => {
+const TaskForm = ({ tasks, setTasks, editMode }) => {
 
     if (tasks.length === 0) {
         return <h3 className="col-span-12"
@@ -19,7 +16,7 @@ const TaskForm = ({ tasks, setTasks, editMode, deleteTask }) => {
                     className='col-span-1 bg-orange-500'
                 >{task.editMode ? 'Save' : 'Edit'}</button>}
 
-                <button onClick={() => deleteTask(task.id)}
+                <button onClick={() => setTasks(tasks.filter(t => task.id !== t.id))}
                     className='col-span-1 bg-red-500'
                 >delete</button>
 
