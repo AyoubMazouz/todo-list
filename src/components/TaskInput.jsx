@@ -1,14 +1,7 @@
 import { FaPlus } from 'react-icons/fa'
 
-
-
 const TaskInput = ({ input, setInput, onSubmit }) => {
-
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     return (
-
         <div className="grid grid-cols-12 pl-4 rounded shadow-md bg-light text-semidark mb-12">
 
             <input type='input'
@@ -23,10 +16,8 @@ const TaskInput = ({ input, setInput, onSubmit }) => {
                 className=''>
                 <FaPlus className='icons' />
             </button>
-
         </div>
 
     )
 }
-
 export default TaskInput;

@@ -1,6 +1,6 @@
 # Todo list App made with React:
 
-#### Live Demo: [ToDo List](https://ayoubmazouz.github.oi/todo-list)
+#### Live Demo: [ToDo List](https://todolist33.netlify.app)
 
 ### In this application you:
 
@@ -13,5 +13,5 @@ The tasks are stored in LocalStorage.
 
 ### Some screenshots:
 
-![1920x1200](./src/screenshots/img1.png)
-![1920x1200](./src/screenshots/img2.png)
+![](./public/screenshots/img1.png)
+![](./public/screenshots/img2.png)

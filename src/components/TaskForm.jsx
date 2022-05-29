@@ -1,26 +1,17 @@
 import { FaTrashAlt, FaSave, FaEdit } from 'react-icons/fa';
 
 
-
 const TaskForm = ({ tasks, setTasks }) => {
 
     if (tasks.length === 0) {
-        return <h3 className="col-span-12 px-6"
-        >You have no tasks for today</h3>
+        return <h3 className="col-span-12 px-6">You have no tasks for today</h3>
     }
-
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    // %%%%%%%%%%%  VARIABLES  %%%%%%%%%%%%%
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     const completedTaskCss = 'grid grid-cols-12 rounded shadow-md pl-6 py-1 bg-dark cursor-pointer';
     const unCompletedTaskCss = 'grid grid-cols-12 rounded shadow-lg pl-4 py-3 bg-light cursor-pointer';
 
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    // %%%%%%%%%%%%%%%  JSX  %%%%%%%%%%%%%%%
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     return (
-        tasks.map(task =>
+        tasks?.map(task =>
             <div key={task.id}
                 onClick={() => setTasks(p => p.map(t =>
                     task.id === t.id && !task.editMode
@@ -49,8 +40,6 @@ const TaskForm = ({ tasks, setTasks }) => {
                     className='col-span-1 mx-2'
                 ><FaTrashAlt className='icons'
                     /></button>
-
-
             </div>
         )
 
@@ -59,9 +48,7 @@ const TaskForm = ({ tasks, setTasks }) => {
 export default TaskForm;
 
 
-
 const Label = ({ task }) => {
-
 
     const completedTaskCss = 'text-overflow line-through text-light';
     const unCompletedTaskCss = 'text-dark text-overflow';
